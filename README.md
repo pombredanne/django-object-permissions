@@ -1,5 +1,5 @@
-Django Per-object Permissions
-=============================
+Django Object-Level Permissions
+===============================
 
 Installation
 ------------

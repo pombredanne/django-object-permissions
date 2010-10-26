@@ -1,2 +1,5 @@
 src/
 *.pyc
+build/
+dist/
+perms.egg-info/
