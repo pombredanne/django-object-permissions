@@ -3,11 +3,11 @@ import sys, os
 
 version = '0.1'
 
-install_requires = ['django']
+install_requires = ['django>=1.2']
 
 CURRENT_FOLDER = os.path.dirname(__file__)
 
-setup(name='bottlenose',
+setup(name='perms',
       version=version,
       description="Gives Django the power of object-level permissions.",
       keywords='django, object permissions',
