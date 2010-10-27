@@ -22,7 +22,13 @@ class ObjectPermissionBackend(object):
         except IndexError:
             return False
 
-        p = UserObjectPermission.objects.filter(content_type=ct, object_id=obj.id, user=user_obj)
+        user_perms = UserObjectPermission.objects.filter(content_type=ct,
+                object_id=obj.id, user=user_obj)
+        group_perms = GroupObjectPermission.objects.filter(content_type=ct,
+                object_id=obj.id, group__in=user_obj.groups.all())
 
-        return p.filter(**{'can_%s' % perm: True}).exists()
+        has_user_perms = any(map(lambda k: getattr(k, 'can_%s' % perm), user_perms))
+        has_group_perms = any(map(lambda k: getattr(k, 'can_%s' % perm), group_perms))
+
+        return has_group_perms or has_user_perms
 
