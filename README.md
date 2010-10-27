@@ -19,10 +19,10 @@ Installation
        )
 
 
-3. For each model you want to enforce row-level ACLs, inherit from
-   `perms.admin.ObjectPermissionMixin` and add `perms.admin.ObjectPermissionInline`
+3. For each model you want to enforce row-level ACLs for users, inherit from
+   `perms.admin.ObjectPermissionMixin` and add `perms.admin.UserObjectPermissionInline`
    as an inline. E.g.
 
        class MyFlatPageAdmin(ObjectPermissionMixin):
-           inlines = [ObjectPermissionInline]
+           inlines = [UserObjectPermissionInline]
 
